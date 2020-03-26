@@ -10,14 +10,8 @@ use Laravel\Lumen\Http\Request;
 
 class UserController extends Controller
 {
-    public function __construct()
-    {
-        $user = User::find(1);
-        Auth::login($user);
-    }
-
     public function getAccountInformations(Request $request)
     {
-        return "ok";
+
     }
 }
