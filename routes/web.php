@@ -18,6 +18,7 @@ Route::group(['middleware' => 'auth:api'], function () {
 
 });
 
+Route::get('media', ['as' => 'media', 'uses' => 'MediaController@getMedias']);
 Route::post('logout', ['as' => 'logout', 'uses' => 'ConnexionController@logout']);
 Route::post('register', ['as' => 'register', 'uses' => 'ConnexionController@register']);
 Route::post('login', ['as' => 'login', 'uses' => 'ConnexionController@login']);
