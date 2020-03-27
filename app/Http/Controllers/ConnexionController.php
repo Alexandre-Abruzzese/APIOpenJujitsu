@@ -43,7 +43,8 @@ class ConnexionController extends Controller
     public function register(Request $request)
     {
         $this->validate($request, [
-            'username' => 'required',
+            'firstname' => 'required',
+            'lastname' => 'required',
             'email' => 'required|email',
             'password' => 'required'
         ]);
@@ -52,7 +53,8 @@ class ConnexionController extends Controller
 
         DB::table('users')->insert(
             [
-                'username' => $request->input('username'),
+                'firstname' => $request->input('firstname'),
+                'lastname' => $request->input('lastname'),
                 'email' => $request->input('email'),
                 'password' => $hashedPassword,
                 'api_token' => sha1(time()),
