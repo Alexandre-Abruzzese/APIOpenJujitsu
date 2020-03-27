@@ -11,15 +11,15 @@
 |
 */
 use \Illuminate\Support\Facades\Route;
-//'middleware' => 'auth', (before the 'as').
 
 Route::group(['middleware' => 'auth:api'], function () {
     Route::get('account', ['as' => 'account', 'uses' => 'UserController@getAccountInformations']);
-
+    Route::post('logout', ['as' => 'logout', 'uses' => 'ConnexionController@logout']);
 });
 
-Route::get('medias', ['as' => 'medias', 'uses' => 'MediaController@getMedias']);
+Route::get('last-medias', ['as' => 'last-medias', 'uses' => 'MediaController@getLastMedias']);
+Route::get('medias', ['as' => 'medias', 'uses' => 'MediaController@getAllMedias']);
 Route::get('news', ['as' => 'news', 'uses' => 'NewController@getNews']);
-Route::post('logout', ['as' => 'logout', 'uses' => 'ConnexionController@logout']);
+
 Route::post('register', ['as' => 'register', 'uses' => 'ConnexionController@register']);
 Route::post('login', ['as' => 'login', 'uses' => 'ConnexionController@login']);
