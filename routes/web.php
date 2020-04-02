@@ -15,11 +15,13 @@ use \Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'auth:api'], function () {
     Route::get('account', ['as' => 'account', 'uses' => 'UserController@getAccountInformations']);
     Route::post('logout', ['as' => 'logout', 'uses' => 'ConnexionController@logout']);
+    Route::post('add-event', ['as' => 'add-event', 'uses' => 'EventController@addAnEvent']);
 });
 
 Route::get('last-medias', ['as' => 'last-medias', 'uses' => 'MediaController@getLastMedias']);
 Route::get('medias', ['as' => 'medias', 'uses' => 'MediaController@getAllMedias']);
 Route::get('news', ['as' => 'news', 'uses' => 'NewController@getNews']);
+Route::get('events', ['as' => 'events', 'uses' => 'EventController@getAllEvents']);
 
 Route::post('register', ['as' => 'register', 'uses' => 'ConnexionController@register']);
 Route::post('login', ['as' => 'login', 'uses' => 'ConnexionController@login']);
