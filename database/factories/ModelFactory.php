@@ -4,6 +4,8 @@
 
 use App\User;
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +20,10 @@ use Faker\Generator as Faker;
 
 $factory->define(User::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
+        'lastname' => $faker->lastname,
+        'firstname' => $faker->firstname,
         'email' => $faker->email,
+        'api_token' => Str::random(40),
+        'password'=> 'testtest',
     ];
 });

@@ -2,11 +2,15 @@
 
 use Laravel\Lumen\Testing\DatabaseMigrations;
 use Laravel\Lumen\Testing\DatabaseTransactions;
+use SebastianBergmann\CodeCoverage\CodeCoverage;
+
 
 class FunctionnalTest extends TestCase
 {
     // To test : seed DB with FakerSeeder
     // and run vendor/bin/phpunit
+    // use DatabaseMigrations;
+    // use DatabaseTransactions;
 
     /**
      * A basic test example.
@@ -15,7 +19,7 @@ class FunctionnalTest extends TestCase
      */
     public function testgetAccount()
     {
-       $response = $this->call('GET','/account');
+        $response = $this->call('GET','/account');
 
         $this->assertEquals(
             200, $response->status()
@@ -72,8 +76,8 @@ class FunctionnalTest extends TestCase
      */
     public function testPostRegister()
     {
-        $faker = Faker\Factory::create();
-        $response = $this->call('POST','/register',['firstname'=>$faker->firstname, 'lastname'=>$faker->lastname, "email"=>$faker->email,"password"=>"testtest"]);
+        $user = factory('App\User')->make();
+        $response = $this->call('POST','/register',['firstname'=>$user->firstname, 'lastname'=>$user->lastname, "email"=>$user->email,"password"=>$user->password]);
         $this->assertEquals(
             200, $response->status()
         );
