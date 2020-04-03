@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1585905438">
-  <project timestamp="1585905438">
+<coverage generated="1585905973">
+  <project timestamp="1585905973">
     <package name="App\Console">
       <file name="/mnt/d/arthur/Documents/Cours/YNOV/Mastère/CoorFrontBack/APIOpenJujitsu/app/Console/Kernel.php">
         <class name="App\Console\Kernel" namespace="App\Console">

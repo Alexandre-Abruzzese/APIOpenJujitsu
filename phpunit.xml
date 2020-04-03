@@ -18,4 +18,9 @@
         <env name="CACHE_DRIVER" value="array"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
     </php>
+
+    <logging>
+        <log type="coverage-clover" target="./coverage/coverage-report.xml"/>
+        <log type="junit" target="./coverage/test-report.xml" logIncompleteSkipped="false"/>
+    </logging>
 </phpunit>

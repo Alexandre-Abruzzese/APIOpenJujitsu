@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Application Test Suite" tests="12" assertions="13" errors="0" warnings="0" failures="0" skipped="0" time="1.480007">
+    <testsuite name="FunctionnalTest" file="/mnt/d/arthur/Documents/Cours/YNOV/Mastère/CoorFrontBack/APIOpenJujitsu/tests/FunctionnalTest.php" tests="7" assertions="8" errors="0" warnings="0" failures="0" skipped="0" time="1.204529">
+      <testcase name="testgetAccount" class="FunctionnalTest" classname="FunctionnalTest" file="/mnt/d/arthur/Documents/Cours/YNOV/Mastère/CoorFrontBack/APIOpenJujitsu/tests/FunctionnalTest.php" line="20" assertions="1" time="0.083462"/>
+      <testcase name="testgetMedias" class="FunctionnalTest" classname="FunctionnalTest" file="/mnt/d/arthur/Documents/Cours/YNOV/Mastère/CoorFrontBack/APIOpenJujitsu/tests/FunctionnalTest.php" line="34" assertions="1" time="0.056382"/>
+      <testcase name="testgetLastMedias" class="FunctionnalTest" classname="FunctionnalTest" file="/mnt/d/arthur/Documents/Cours/YNOV/Mastère/CoorFrontBack/APIOpenJujitsu/tests/FunctionnalTest.php" line="48" assertions="1" time="0.044974"/>
+      <testcase name="testgetNews" class="FunctionnalTest" classname="FunctionnalTest" file="/mnt/d/arthur/Documents/Cours/YNOV/Mastère/CoorFrontBack/APIOpenJujitsu/tests/FunctionnalTest.php" line="63" assertions="1" time="0.041376"/>
+      <testcase name="testPostRegister" class="FunctionnalTest" classname="FunctionnalTest" file="/mnt/d/arthur/Documents/Cours/YNOV/Mastère/CoorFrontBack/APIOpenJujitsu/tests/FunctionnalTest.php" line="77" assertions="1" time="0.140154"/>
+      <testcase name="testPostRegisterWithUserInDB" class="FunctionnalTest" classname="FunctionnalTest" file="/mnt/d/arthur/Documents/Cours/YNOV/Mastère/CoorFrontBack/APIOpenJujitsu/tests/FunctionnalTest.php" line="91" assertions="1" time="0.740174"/>
+      <testcase name="testPostLogin" class="FunctionnalTest" classname="FunctionnalTest" file="/mnt/d/arthur/Documents/Cours/YNOV/Mastère/CoorFrontBack/APIOpenJujitsu/tests/FunctionnalTest.php" line="106" assertions="2" time="0.098007"/>
+    </testsuite>
+    <testsuite name="UnitTest" file="/mnt/d/arthur/Documents/Cours/YNOV/Mastère/CoorFrontBack/APIOpenJujitsu/tests/UnitTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.031777">
+      <testcase name="testUnitRegister" class="UnitTest" classname="UnitTest" file="/mnt/d/arthur/Documents/Cours/YNOV/Mastère/CoorFrontBack/APIOpenJujitsu/tests/UnitTest.php" line="16" assertions="1" time="0.031777"/>
+    </testsuite>
+    <testsuite name="UserTest" file="/mnt/d/arthur/Documents/Cours/YNOV/Mastère/CoorFrontBack/APIOpenJujitsu/tests/UserTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.243701">
+      <testcase name="testGetByIdUser" class="UserTest" classname="UserTest" file="/mnt/d/arthur/Documents/Cours/YNOV/Mastère/CoorFrontBack/APIOpenJujitsu/tests/UserTest.php" line="20" assertions="1" time="0.042609"/>
+      <testcase name="testCreateUser" class="UserTest" classname="UserTest" file="/mnt/d/arthur/Documents/Cours/YNOV/Mastère/CoorFrontBack/APIOpenJujitsu/tests/UserTest.php" line="31" assertions="1" time="0.085979"/>
+      <testcase name="testUpdateUser" class="UserTest" classname="UserTest" file="/mnt/d/arthur/Documents/Cours/YNOV/Mastère/CoorFrontBack/APIOpenJujitsu/tests/UserTest.php" line="43" assertions="1" time="0.058504"/>
+      <testcase name="testDeleteUser" class="UserTest" classname="UserTest" file="/mnt/d/arthur/Documents/Cours/YNOV/Mastère/CoorFrontBack/APIOpenJujitsu/tests/UserTest.php" line="57" assertions="1" time="0.056609"/>
+    </testsuite>
+  </testsuite>
+</testsuites>
