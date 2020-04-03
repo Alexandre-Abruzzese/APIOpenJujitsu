@@ -2,6 +2,8 @@
 
 use Laravel\Lumen\Testing\DatabaseMigrations;
 use Laravel\Lumen\Testing\DatabaseTransactions;
+use SebastianBergmann\CodeCoverage\CodeCoverage;
+
 
 class FunctionnalTest extends TestCase
 {
@@ -17,7 +19,7 @@ class FunctionnalTest extends TestCase
      */
     public function testgetAccount()
     {
-       $response = $this->call('GET','/account');
+        $response = $this->call('GET','/account');
 
         $this->assertEquals(
             200, $response->status()
