@@ -3,6 +3,7 @@
 use Laravel\Lumen\Testing\DatabaseMigrations;
 use Laravel\Lumen\Testing\DatabaseTransactions;
 use App\User;
+use SebastianBergmann\CodeCoverage\CodeCoverage;
 
 class UserTest extends TestCase
 {
@@ -63,3 +64,4 @@ class UserTest extends TestCase
 
     }
 }
+
