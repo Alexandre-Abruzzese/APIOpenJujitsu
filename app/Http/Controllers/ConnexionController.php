@@ -59,7 +59,8 @@ class ConnexionController extends Controller
                 'password' => $hashedPassword,
                 'api_token' => sha1(time()),
                 'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
+                'updated_at' => date('Y-m-d H:i:s'),
+                'is_active' => 1
             ]
         );
         return $hashedPassword;

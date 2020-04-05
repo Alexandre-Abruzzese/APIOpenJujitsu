@@ -16,6 +16,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('account', ['as' => 'account', 'uses' => 'UserController@getAccountInformations']);
     Route::post('logout', ['as' => 'logout', 'uses' => 'ConnexionController@logout']);
     Route::post('add-event', ['as' => 'add-event', 'uses' => 'EventController@addAnEvent']);
+    Route::post('add-user', ['as' => 'add-user', 'uses' => 'ConnexionController@register']);
+    Route::post('update-user', ['as' => 'update-user', 'uses' => 'UserController@updateActiveUser']);
 });
 
 Route::get('last-medias', ['as' => 'last-medias', 'uses' => 'MediaController@getLastMedias']);
