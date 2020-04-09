@@ -18,6 +18,15 @@ class EventController
             ->get();
     }
 
+    public function getOneEvent(Request $request)
+    {
+        $this->validate($request, [
+            'id' => 'required'
+        ]);
+
+        return DB::select('SELECT * FROM events WHERE id = ?', [$request->input('id')]);
+    }
+
     public function addAnEvent(Request $request)
     {
         DB::table('events')->insert(
@@ -32,6 +41,14 @@ class EventController
         $res['success'] = true;
         $res['message'] = 'Votre évènement à bien été créé.';
         $res['user_information'] = Auth::user();
+        return response($res);
+    }
+
+    public function dropOneEvent(Request $request)
+    {
+        DB::delete('delete from events where id = ?', [$request->input('id')]);
+        $res['success'] = true;
+        $res['message'] = 'Votre évènement à bien été supprimé.';
         return response($res);
     }
 }
