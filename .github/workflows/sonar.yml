@@ -14,5 +14,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build and Run the Docker image
-      run: docker build . --file Dockerfile.sonar --tag sonar:$(date +%s);docker run sonar
+    - name: Docker login
+      run: docker login -u tuthur9 -p @Mack:261113
+    - name: Run the Docker image
+      run: docker run tuthur9/sonar-scanner:latest
