@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Run the Docker image
-      run: docker run tuthur9/sonar-scanner:latest
+      run: docker run -v .:/ tuthur9/sonar-scanner:latest

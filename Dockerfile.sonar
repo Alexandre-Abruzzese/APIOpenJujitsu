@@ -19,8 +19,6 @@ RUN wget -O /tmp/sonar-scanner-cli-${SONAR_SCANNER_VER}.zip \
     unzip /tmp/sonar-scanner-cli-${SONAR_SCANNER_VER}.zip -d /opt/ && \
     rm -rf /tmp/sonar-scanner-cli-${SONAR_SCANNER_VER}.zip
 
-COPY . /
-
 WORKDIR /
 
 ENTRYPOINT sonar-scanner -D sonar.organization=alexandre-abruzzese \
