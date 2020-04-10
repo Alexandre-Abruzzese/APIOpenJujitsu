@@ -1,0 +1,31 @@
+FROM quay.io/ukhomeofficedigital/openjdk8:v1.8.0.212
+
+ENV SONAR_SCANNER_VER=4.3.0.2102
+ENV SONAR_SCANNER_OPTS="-Xmx512m -Dsonar.host.url=https://sonarcloud.io"
+ENV PATH=/opt/sonar-scanner-${SONAR_SCANNER_VER}/bin:${PATH}
+
+RUN yum clean all && \
+    yum update -y --exclude filesystem* && \
+    yum install -y wget curl unzip git python3-pip && \
+    yum clean all && \
+    rpm --rebuilddb
+
+#for ansible plugins
+RUN pip3 install ansible-lint
+
+#Install sonar-scanner
+RUN wget -O /tmp/sonar-scanner-cli-${SONAR_SCANNER_VER}.zip \
+    https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONAR_SCANNER_VER}.zip && \
+    unzip /tmp/sonar-scanner-cli-${SONAR_SCANNER_VER}.zip -d /opt/ && \
+    rm -rf /tmp/sonar-scanner-cli-${SONAR_SCANNER_VER}.zip
+
+COPY . /
+
+WORKDIR /
+
+ENTRYPOINT sonar-scanner -D sonar.organization=alexandre-abruzzese \
+  -D sonar.projectKey=Alexandre-Abruzzese_APIOpenJujitsu \
+  -D sonar.sources=app,resources,routes,database \
+  -D sonar.php.coverage.reportPaths=./coverage/coverage-report.xml \
+  -D sonar.php.tests.reportPath=./coverage/test-report.xml \
+  -D sonar.login=d19a7822397a7e48480651ea14639dc0dc67dca1
