@@ -23,13 +23,4 @@ If you discover a security vulnerability within Lumen, please send an e-mail to 
 
 The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-## Sonar Cloud 
 
-"sonar-scanner \
-  -Dsonar.organization=alexandre-abruzzese \
-  -Dsonar.projectKey=Alexandre-Abruzzese_APIOpenJujitsu \
-  -Dsonar.sources=app,resources,routes,database \
-  -Dsonar.host.url=https://sonarcloud.io \
-  -Dsonar.php.coverage.reportPaths=./coverage/coverage-report.xml \ 
-  -Dsonar.php.tests.reportPath=./coverage/test-report.xml \
-  -Dsonar.login=d19a7822397a7e48480651ea14639dc0dc67dca1"

@@ -14,14 +14,26 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: create DB
+      run: touch database/database.sqlite
+
+    - name: Create .env
+      run: cp .env.example .env
+
+    - name: App Key
+      run: php artisan generate:key
+
     - name: Validate composer.json and composer.lock
       run: composer validate
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
-      
+
     - name: Run Tests
       run: vendor/bin/phpunit
+
+    - name: Delete Files
+      run: rm -rf .env database/database.sqlite
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
