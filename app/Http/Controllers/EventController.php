@@ -34,6 +34,8 @@ class EventController extends Controller
                 'author' => Auth::user()->username,
                 'event_name' => $request->input('event_name'),
                 'description' => $request->input('description'),
+                'start_at' => $request->input('start_at'),
+                'end_at' => $request->input('start_at'),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]
@@ -56,12 +58,14 @@ class EventController extends Controller
     {
         $event_name = $request->input('event_name');
         $description = $request->input('description');
+        $start_at = $request->input('start_at');
+        $end_at = $request->input('end_at');
         $updated_at = date('Y-m-d H:i:s');
 
         DB::table('events')
             ->where('id', $request->input('id'))
             ->update(['event_name' => $event_name, 'description' => $description,
-                'updated_at' => $updated_at]);
+                'updated_at' => $updated_at, 'start_at' => $start_at, 'end_at' => $end_at]);
         $res['success'] = true;
         $res['message'] = 'Votre évènement à bien été modifié.';
         return response($res);
