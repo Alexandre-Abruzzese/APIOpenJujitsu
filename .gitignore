@@ -209,3 +209,4 @@ $RECYCLE.BIN/
 
 composer.lock
 .scannerwork
+coverage
