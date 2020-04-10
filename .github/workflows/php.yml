@@ -26,6 +26,9 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
 
+    - name: Migrate and Seed
+      run: php artisan migrate; php artisan db:seed
+
     - name: Run Tests
       run: vendor/bin/phpunit
 
