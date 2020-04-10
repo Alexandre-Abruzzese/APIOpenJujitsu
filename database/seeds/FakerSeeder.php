@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 
 class FakerSeeder extends Seeder
 {
@@ -19,6 +20,7 @@ class FakerSeeder extends Seeder
             'email'=>"test@test.fr",
             'password'=> Hash::make('testtest'),
             'api_token'=>Str::random(40),
+            'is_active' => 1,
             'created_at'=>'2020-03-04 15:02:27',
             'updated_at'=>'2020-03-04 15:02:27'
         ]);
@@ -28,20 +30,18 @@ class FakerSeeder extends Seeder
             'email'=>"test@test.com",
             'password'=> Hash::make('testtest'),
             'api_token'=>Str::random(40),
+            'is_active' => 1,
             'created_at'=>'2020-03-04 15:02:27',
             'updated_at'=>'2020-03-04 15:02:27'
         ]);
-        // $faker = Faker\Factory::create();
-        // for ($i = 0; $i < 10; $i++) {
-        //     DB::table('users')->insert([
-        //         'firstname'=>$faker->firstname,
-        //         'lastname'=>$faker->lastname,
-        //         'email'=>$faker->email,
-        //         'password'=> Hash::make('testtest'),
-        //         'api_token'=>Str::random(40),
-        //         'created_at'=>'2020-03-04 15:02:27',
-        //         'updated_at'=>'2020-03-04 15:02:27'
-        //     ]);
-        // }
+        $faker = Faker\Factory::create();
+        for ($i = 0; $i < 10; $i++) {
+            DB::table('medias')->insert([
+                    'path' => $faker->imageUrl($width = 640, $height = 480),
+                    'description' => $faker->text($maxNbChars = 40),
+                    'type' => 'image',
+                    'created_at'=> Carbon::now(),
+            ]);
+        }
     }
 }
