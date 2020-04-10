@@ -20,14 +20,14 @@ jobs:
     - name: Create .env
       run: cp .env.example .env
 
-    - name: App Key
-      run: php artisan generate:key
-
     - name: Validate composer.json and composer.lock
       run: composer validate
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
+
+    - name: App Key
+      run: php artisan generate:key
 
     - name: Run Tests
       run: vendor/bin/phpunit
