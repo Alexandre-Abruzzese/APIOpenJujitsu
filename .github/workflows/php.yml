@@ -26,9 +26,6 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
 
-    - name: App Key
-      run: php artisan generate:key
-
     - name: Run Tests
       run: vendor/bin/phpunit
 
