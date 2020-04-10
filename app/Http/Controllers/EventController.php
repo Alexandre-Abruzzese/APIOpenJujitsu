@@ -51,4 +51,19 @@ class EventController extends Controller
         $res['message'] = 'Votre évènement à bien été supprimé.';
         return response($res);
     }
+
+    public function modifyOneEvent(Request $request)
+    {
+        $event_name = $request->input('event_name');
+        $description = $request->input('description');
+        $updated_at = date('Y-m-d H:i:s');
+
+        DB::table('events')
+            ->where('id', $request->input('id'))
+            ->update(['event_name' => $event_name, 'description' => $description,
+                'updated_at' => $updated_at]);
+        $res['success'] = true;
+        $res['message'] = 'Votre évènement à bien été modifié.';
+        return response($res);
+    }
 }

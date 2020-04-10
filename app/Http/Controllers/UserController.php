@@ -7,7 +7,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Laravel\Lumen\Http\Request;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -20,6 +20,6 @@ class UserController extends Controller
 
         DB::table('users')
             ->where('lastname', $request->input('lastname'))
-            ->update(['is_active' => 0]);
+            ->update(['is_active' => $request->input('is_active')]);
     }
 }
