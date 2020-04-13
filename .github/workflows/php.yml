@@ -36,6 +36,8 @@ jobs:
         run: |
           cp .env.example .env
           touch database/database.sqlite
+          php artisan migrate
+          php artisan db:seed
       - name: Test with phpunit
         run: vendor/bin/phpunit --coverage-text
       - name: Clean
