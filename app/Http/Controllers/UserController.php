@@ -17,9 +17,9 @@ class UserController extends Controller
             'lastname' => 'required',
             'is_active' => 'required'
         ]);
+        $user = User::find($request->input('id'));
+        $user->is_active = $request->input('is_active');
+        $user->save();
 
-        DB::table('users')
-            ->where('lastname', $request->input('lastname'))
-            ->update(['is_active' => $request->input('is_active')]);
     }
 }

@@ -6,22 +6,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Media;
 
 class MediaController extends Controller
 {
     public function getLastMedias()
     {
-        return DB::table('medias')
-            ->orderBy('created_at', 'desc')
-            ->take(4)
-            ->get();
+        $media = Media::orderBy('created_at','desc')->take(4)->get();
+        return $media;
     }
 
     public function getAllMedias()
     {
-        return DB::table('medias')
-            ->orderBy('created_at', 'desc')
-            ->get();
+        $media = Media::orderBy('created_at','desc')->get();
+        return $media;
     }
 
     public function getOneMedia(Request $request)
@@ -29,7 +27,7 @@ class MediaController extends Controller
         $this->validate($request, [
             'id' => 'required'
         ]);
-
-        return DB::select('SELECT * FROM medias WHERE id = ?', [$request->input('id')]);
+        $media = Media::find($request->input('id'));
+        return $media;
     }
 }

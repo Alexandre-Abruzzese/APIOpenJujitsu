@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\User;
 
 class ConnexionController extends Controller
 {
@@ -14,7 +15,7 @@ class ConnexionController extends Controller
         $email = $request->input('email');
         $password = $request->input('password');
 
-        $login = DB::table('users')->where('email', $email)->first();
+        $login = User::where('email', $email)->first();
         if (!$login) {
             $res['success'] = false;
             $res['message'] = 'Email ou Mot de passe incorrect';
@@ -22,7 +23,7 @@ class ConnexionController extends Controller
         } else {
             if (Hash::check($password, $login->password)) {
                 $api_token = sha1(time());
-                $create_token = DB::table('users')->where('email', $login->email)->update(['api_token' =>
+                $create_token = User::where('email', $login->email)->update(['api_token' =>
                     $api_token]);
                 if ($create_token) {
                     $res['success'] = true;
@@ -51,18 +52,15 @@ class ConnexionController extends Controller
 
         $hashedPassword = Hash::make($request->input('password'));
 
-        DB::table('users')->insert(
-            [
-                'firstname' => $request->input('firstname'),
-                'lastname' => $request->input('lastname'),
-                'email' => $request->input('email'),
-                'password' => $hashedPassword,
-                'api_token' => sha1(time()),
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s'),
-                'is_active' => 1
-            ]
-        );
+        $newUser = new User();
+        $newUser->firstname = $request->input('firstname');
+        $newUser->lastname = $request->input('lastname');
+        $newUser->email = $request->input('email');
+        $newUser->password = $hashedPassword;
+        $newUser->api_token = sha1(time());
+        $newUser->is_active = 1;
+        $newUser->save();
+
         return $hashedPassword;
     }
 
@@ -70,7 +68,7 @@ class ConnexionController extends Controller
     {
         $api_token = $request->header('api_token');
         if ($api_token != "0") {
-            DB::table('users')->where('api_token', $api_token)->update(['api_token' => 0]);
+            User::where('api_token', $api_token)->update(['api_token' => 0]);
             $res['success'] = true;
             $res['message'] = 'Vous êtes bien déconnecté.';
             return response($res);

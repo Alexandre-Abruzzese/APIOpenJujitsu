@@ -5,14 +5,12 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Support\Facades\DB;
-
+use App\News;
 class NewController
 {
     public function getNews()
     {
-        return DB::table('news')
-        ->orderBy('description', 'desc')
-        ->take(3)
-        ->get();
+        $news = News::orderBy('created_at', 'desc')->take(3)->get();
+        return $news;
     }
 }
