@@ -58,7 +58,7 @@ class FakerSeeder extends Seeder
         ]);
 
         DB::table('schedule')->insert([
-            'location' => 'Bordeaux',
+            'location' => 'TEST GET',
             'begin_at' => Carbon::now(),
             'end_at' => Carbon::now(),
             'date' => Carbon::now(),
