@@ -42,6 +42,29 @@ class FakerSeeder extends Seeder
             'created_at'=> Carbon::now(),
         ]);
 
+        DB::table('events')->insert([
+            'author' => "TEST GET",
+            'event_name' => "TEST" ,
+            'description' => "LOREM IPSUM",
+            'start_at' => Carbon::now(),
+            'end_at' => Carbon::now(),
+            'created_at'=> Carbon::now(),
+        ]);
+
+        DB::table('news')->insert([
+            'description' => "TEST GET",
+            'linkURL' => "URL",
+            'created_at'=> Carbon::now(),
+        ]);
+
+        DB::table('schedule')->insert([
+            'location' => 'Bordeaux',
+            'begin_at' => Carbon::now(),
+            'end_at' => Carbon::now(),
+            'date' => Carbon::now(),
+            'created_at'=> Carbon::now(),
+        ]);
+
         $faker = Faker\Factory::create();
         for ($i = 0; $i < 10; $i++) {
             DB::table('medias')->insert([
