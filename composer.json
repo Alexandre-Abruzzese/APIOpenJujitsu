@@ -11,7 +11,7 @@
         "laravel/lumen-framework": "^7.0",
         "predis/predis": "^1.1",
         "tymon/jwt-auth": "1.0.*@dev",
-      "ext-http": "*"
+        "ext-http": "*"
     },
     "require-dev": {
         "fzaninotto/faker": "^1.9",
