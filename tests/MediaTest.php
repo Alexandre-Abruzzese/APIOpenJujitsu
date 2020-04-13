@@ -19,8 +19,8 @@ class MediaTest extends TestCase
      */
     public function testGetByIdMedia()
     {
-        $media = Media::find(2);
-        $this->assertSame("https://lorempixel.com/640/480/?70063", $media->path);
+        $media = Media::find(1);
+        $this->assertSame("TEST GET", $media->path);
     }
 
     /**
@@ -42,10 +42,10 @@ class MediaTest extends TestCase
      */
     public function testUpdateMedia()
     {
-        $media = Media::find(2);
+        $media = Media::find(1);
         $media->path = "TEST UPDATE";
         $media->save();
-        $mediainDB = Media::find(2);
+        $mediainDB = Media::find(1);
         $this->assertSame($media->path, $mediainDB->path);
     }
 

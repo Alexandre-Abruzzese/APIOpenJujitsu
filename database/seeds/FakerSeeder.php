@@ -34,6 +34,14 @@ class FakerSeeder extends Seeder
             'created_at'=>'2020-03-04 15:02:27',
             'updated_at'=>'2020-03-04 15:02:27'
         ]);
+
+        DB::table('medias')->insert([
+            'path' => 'TEST GET',
+            'description' => 'LOREM IPSUM',
+            'type' => 'image',
+            'created_at'=> Carbon::now(),
+        ]);
+
         $faker = Faker\Factory::create();
         for ($i = 0; $i < 10; $i++) {
             DB::table('medias')->insert([
