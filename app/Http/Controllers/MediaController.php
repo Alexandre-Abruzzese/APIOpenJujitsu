@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class MediaController extends Controller
@@ -21,5 +22,14 @@ class MediaController extends Controller
         return DB::table('medias')
             ->orderBy('created_at', 'desc')
             ->get();
+    }
+
+    public function getOneMedia(Request $request)
+    {
+        $this->validate($request, [
+            'id' => 'required'
+        ]);
+
+        return DB::select('SELECT * FROM medias WHERE id = ?', [$request->input('id')]);
     }
 }

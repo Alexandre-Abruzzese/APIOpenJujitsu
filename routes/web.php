@@ -18,19 +18,26 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('logout', ['as' => 'logout', 'uses' => 'ConnexionController@logout']);
     Route::post('add-event', ['as' => 'add-event', 'uses' => 'EventController@addAnEvent']);
     Route::post('add-user', ['as' => 'add-user', 'uses' => 'ConnexionController@register']);
+    Route::post('add-session', ['as' => 'add-session', 'uses' => 'ScheduleController@addASession']);
 
     Route::put('update-event', ['as' => 'update-event', 'uses' => 'EventController@modifyOneEvent']);
     Route::put('delete-event', ['as' => 'delete-event', 'uses' => 'EventController@dropOneEvent']);
     Route::put('update-user', ['as' => 'update-user', 'uses' => 'UserController@updateActiveUser']);
+    Route::put('delete-session', ['as' => 'delete-session', 'uses' => 'ScheduleController@dropOneSession']);
+    Route::put('update-session', ['as' => 'update-session', 'uses' => 'ScheduleController@modifyOneSession']);
 });
 
 Route::get('last-medias', ['as' => 'last-medias', 'uses' => 'MediaController@getLastMedias']);
 Route::get('medias', ['as' => 'medias', 'uses' => 'MediaController@getAllMedias']);
+Route::get('media', ['as' => 'media', 'uses' => 'MediaController@getOneMedia']);
 
 Route::get('news', ['as' => 'news', 'uses' => 'NewController@getNews']);
 
 Route::get('events', ['as' => 'events', 'uses' => 'EventController@getAllEvents']);
 Route::put('event', ['as' => 'event', 'uses' => 'EventController@getOneEvent']);
+
+Route::get('sessions', ['as' => 'sessions', 'uses' => 'ScheduleController@getAllSessions']);
+Route::get('session', ['as' => 'session', 'uses' => 'ScheduleController@getOneSession']);
 
 Route::post('register', ['as' => 'register', 'uses' => 'ConnexionController@register']);
 Route::post('login', ['as' => 'login', 'uses' => 'ConnexionController@login']);

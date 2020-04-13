@@ -50,7 +50,7 @@ class EventController extends Controller
     {
         DB::delete('delete from events where id = ?', [$request->input('id')]);
         $res['success'] = true;
-        $res['message'] = 'Votre évènement à bien été supprimé.';
+        $res['message'] = 'Votre évènement a bien été supprimé.';
         return response($res);
     }
 
@@ -67,7 +67,7 @@ class EventController extends Controller
             ->update(['event_name' => $event_name, 'description' => $description,
                 'updated_at' => $updated_at, 'start_at' => $start_at, 'end_at' => $end_at]);
         $res['success'] = true;
-        $res['message'] = 'Votre évènement à bien été modifié.';
+        $res['message'] = 'Votre évènement a bien été modifié.';
         return response($res);
     }
 }
