@@ -26,6 +26,25 @@ class FunctionnalTest extends TestCase
         );
     }
 
+    public function testpostContact()
+    {
+        $contact = factory('App\Contact')->make();
+        $response = $this->call('POST','/contact', ['firstname'=>$contact->firstname, 'lastname'=>$contact->lastname, "email"=>$contact->email,"body"=>$contact->body,'phone'=>$contact->phone]);
+
+        $this->assertEquals(
+            200, $response->status()
+        );
+    }
+
+    public function testgetContact()
+    {
+        $response = $this->call('GET','/contacts');
+
+        $this->assertEquals(
+            200, $response->status()
+        );
+    }
+
     /**
      * A basic test example.
      *
@@ -114,17 +133,4 @@ class FunctionnalTest extends TestCase
         );
     }
 
-    // /**
-    //  * A basic test example.
-    //  *
-    //  * @return void
-    //  */
-    // public function getLogout()
-    // {
-    //    $response = $this->call('GET','/logout');
-
-    //     $this->assertEquals(
-    //         200, $response->status()
-    //     );
-    // }
 }
