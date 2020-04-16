@@ -39,5 +39,8 @@ Route::put('event', ['as' => 'event', 'uses' => 'EventController@getOneEvent']);
 Route::get('sessions', ['as' => 'sessions', 'uses' => 'ScheduleController@getAllSessions']);
 Route::get('session', ['as' => 'session', 'uses' => 'ScheduleController@getOneSession']);
 
+Route::post('contact', ['as' => 'contactPost', 'uses' => 'ContactController@add']);
+Route::get('contacts', ['as' => 'contacts', 'uses' => 'ContactController@getAllContacts']);
+
 Route::post('register', ['as' => 'register', 'uses' => 'ConnexionController@register']);
 Route::post('login', ['as' => 'login', 'uses' => 'ConnexionController@login']);

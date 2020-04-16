@@ -65,6 +65,14 @@ class FakerSeeder extends Seeder
             'created_at'=> Carbon::now(),
         ]);
 
+        DB::table('contacts')->insert([
+            'firstname' => 'TEST GET',
+            'lastname' => 'test get',
+            'email' => 'test get',
+            'body' => 'test get',
+            'phone'=> 'test get',
+        ]);
+
         $faker = Faker\Factory::create();
         for ($i = 0; $i < 10; $i++) {
             DB::table('medias')->insert([
