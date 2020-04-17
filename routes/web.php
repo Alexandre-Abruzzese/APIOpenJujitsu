@@ -28,6 +28,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::put('update-session', ['as' => 'update-session', 'uses' => 'ScheduleController@modifyOneSession']);
 });
 
+Route::get('getHashPassword', ['uses' => 'ConnexionController@hashPassword']);
+
 Route::get('last-medias', ['as' => 'last-medias', 'uses' => 'MediaController@getLastMedias']);
 Route::get('medias', ['as' => 'medias', 'uses' => 'MediaController@getAllMedias']);
 Route::get('media', ['as' => 'media', 'uses' => 'MediaController@getOneMedia']);

@@ -3,25 +3,38 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use App\User;
 
 class ConnexionController extends Controller
 {
+
+    public function hashPassword(Request $request){
+        $email = $_GET['email'];
+        $user = User::Where('email', $email)->first();
+        $res['password'] = $user->password;
+        $res['success'] = true;
+        $res['secret'] = sha1(time());
+        $user->token = $res['secret'];
+        $user->save();
+        return response($res);
+    }
+
     public function login(Request $request)
     {
-        $email = $request->input('email');
-        $password = $request->input('password');
+        $token = $request->input('secret');
+        $passwordCheck = $request->input('passwordCheck');
 
-        $login = User::where('email', $email)->first();
+        $login = User::where('token', $token)->first();
         if (!$login) {
             $res['success'] = false;
             $res['message'] = 'Email ou Mot de passe incorrect';
             return response($res);
         } else {
-            if (Hash::check($password, $login->password)) {
+            if ($passwordCheck) {
                 $api_token = sha1(time());
                 $create_token = User::where('email', $login->email)->update(['api_token' =>
                     $api_token]);
