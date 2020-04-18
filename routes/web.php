@@ -15,6 +15,8 @@ use \Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'auth:api'], function () {
     Route::get('account', ['as' => 'account', 'uses' => 'UserController@getAccountInformations']);
 
+    Route::get('users', ['as' => 'account', 'uses' => 'UserController@getAllUsers']);
+
     Route::post('logout', ['as' => 'logout', 'uses' => 'ConnexionController@logout']);
     Route::post('add-event', ['as' => 'add-event', 'uses' => 'EventController@addAnEvent']);
     Route::post('media', ['as' => 'add-media', 'uses' => 'MediaController@addAMedia']);

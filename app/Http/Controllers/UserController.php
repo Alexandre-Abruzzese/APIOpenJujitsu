@@ -22,4 +22,9 @@ class UserController extends Controller
         $user->save();
 
     }
+
+    public function getAllUsers(){
+        $users = User::all();
+        return $users;
+    }
 }
