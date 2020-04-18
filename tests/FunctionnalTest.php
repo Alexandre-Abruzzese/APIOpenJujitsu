@@ -2,7 +2,7 @@
 
 use Laravel\Lumen\Testing\DatabaseMigrations;
 use Laravel\Lumen\Testing\DatabaseTransactions;
-use SebastianBergmann\CodeCoverage\CodeCoverage;
+use Illuminate\Support\Facades\Hash;
 
 
 class FunctionnalTest extends TestCase
@@ -109,6 +109,7 @@ class FunctionnalTest extends TestCase
      */
     public function testPostRegisterWithUserInDB()
     {
+
        $response = $this->call('POST','/register',['firstname'=>'TEST', 'lastname'=>"TEST", "email"=>"test@test.com","password"=>"testtest"]);
 
         $this->assertEquals(
@@ -124,7 +125,9 @@ class FunctionnalTest extends TestCase
      */
     public function testPostLogin()
     {
-       $response = $this->call('POST','/login',['email'=>'test@test.com','password'=>'testtest']);
+        $password = $this->call('GET','/getHashPassword',['email'=>'test@test.com']);
+        Hash::check('testtest', $password["password"]);
+       $response = $this->call('POST','/login',['secret'=>$password['secret'],  'passwordCheck' => true,]);
        $this->seeJson(
         ['success'=> true]
         );

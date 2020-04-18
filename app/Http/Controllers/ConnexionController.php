@@ -13,7 +13,7 @@ class ConnexionController extends Controller
 {
 
     public function hashPassword(Request $request){
-        $email = $_GET['email'];
+        $email = isset($_GET['email']) ? $_GET['email']:$request->input('email');
         $user = User::Where('email', $email)->first();
         $res['password'] = $user->password;
         $res['success'] = true;
