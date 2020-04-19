@@ -34,12 +34,10 @@ class MediaController extends Controller
     public function addAMedia(Request $request){
         $this->validate($request, [
             'path' => 'max:255',
-            'file' => 'mimes:jpeg,png,jpg,gif,svg,mp3,mp4',
             'description' => "max:255",
             'type' => 'required'
         ]);
-
-        if($request->get('path') == null && $request->get('file') == null){
+        if($request->get('path') == null){
             $res['success'] = false;
             $res['message'] = "Aucun fichier uploader ni d'url ";
 
@@ -50,24 +48,8 @@ class MediaController extends Controller
 
         $media->description = $request->input('description');
         $media->type = $request->input('type');
+        $media->path = $request->input('path');
 
-        if($request->get('path') != null) {
-            $media->path = $request->input('path');
-        }
-        elseif($request->get('file') != null){
-            $uploadedFile = $request->get('file');
-            if (!$uploadedFile) {
-                $res['success'] = false;
-                $res['message'] = "Aucun fichier uploader";
-
-                return response($res);
-            }
-            $fileName = time().rand(0, 1000).pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
-            $fileName = $fileName.'.'.$uploadedFile->getClientOriginalExtension();
-            $uploadedFile->move(public_path('uploads/'.$media->type),$fileName);
-            $media->path = env('API_URL').'uploads/'.$media->type.'/'.$fileName;
-
-        }
         $media->save();
 
         $res['success'] = true;

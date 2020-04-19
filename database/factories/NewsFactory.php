@@ -18,6 +18,7 @@ use Faker\Generator as Faker;
 
 $factory->define(News::class, function (Faker $faker) {
     return [
+        'title' => $faker->text($maxNbChars = 10),
         'description' => $faker->text($maxNbChars = 40),
         'linkURL' => $faker->url,
     ];

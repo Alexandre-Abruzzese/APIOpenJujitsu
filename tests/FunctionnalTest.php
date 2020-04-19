@@ -26,6 +26,15 @@ class FunctionnalTest extends TestCase
         );
     }
 
+    public function testgetUsers()
+    {
+        $response = $this->call('GET','/users');
+
+        $this->assertEquals(
+            200, $response->status()
+        );
+    }
+
     public function testpostContact()
     {
         $contact = factory('App\Contact')->make();

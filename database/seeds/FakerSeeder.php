@@ -52,6 +52,7 @@ class FakerSeeder extends Seeder
         ]);
 
         DB::table('news')->insert([
+            'title' => 'TEST GET',
             'description' => "TEST GET",
             'linkURL' => "URL",
             'created_at'=> Carbon::now(),
